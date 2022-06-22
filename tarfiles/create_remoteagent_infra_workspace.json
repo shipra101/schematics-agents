@@ -1,0 +1,63 @@
+{
+    "name": "schematics-agent-infra-workspace",
+    "type": [
+        "terraform_v0.13"
+    ],
+    "description": "schematics agents infra workspace",
+    "template_repo": {
+        "url": ""
+    },
+    "template_data": [
+        {
+            "folder": ".",
+            "type": "terraform_v0.13",
+            "variablestore": [
+                {
+                    "name": "user_logdna_name",
+                    "type": "string",
+                    "value": "remote-agent-logdna-test"
+                },
+                {
+                    "name": "user_resource_key_name",
+                    "type": "string",
+                    "value": "remote-agent-cos-key-test"
+                },
+                {
+                    "name": "user_cos_instance_name",
+                    "type": "string",
+                    "value": "remote-agent-cos-test"
+                },
+                {
+                    "name": "user_storage_bucket_name",
+                    "type": "string",
+                    "value": "remote-agent-cos-bucket-test"
+                },
+                {
+                    "name": "user_resource_group_name",
+                    "type": "string",
+                    "value": "Default"
+                },
+                {
+                    "name": "user_create_vpc",
+                    "type": "bool",
+                    "value": "true"
+                },
+                {
+                    "name": "user_vpc_name",
+                    "type": "string",
+                    "value": "remoteagent-vpc-test"
+                },
+                {
+                    "name": "create_cluster",
+                    "type": "bool",
+                    "value": "true"
+                },
+                {
+                    "name": "user_cluster_name",
+                    "type": "string",
+                    "value": "remoteagent-iks-test"
+                }
+            ]
+        }
+    ]
+}
