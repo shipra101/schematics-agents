@@ -1,0 +1,71 @@
+{
+    "name": "schematics-remote-service-workspace",
+    "type": [
+        "terraform_v0.13"
+    ],
+    "description": "schematics agents runtime services workspace",
+    "template_repo": {
+        "url": ""
+    },
+    "template_data": [
+        {
+            "folder": ".",
+            "type": "terraform_v0.13",
+            "variablestore": [
+                {
+                    "name": "user_cluster_id",
+                    "type": "string",
+                    "value": "<target_iks_cluster_ID"
+                },
+                {
+                    "name": "user_resource_group_id",
+                    "type": "string",
+                    "value": "<target_resource_group_ID>"
+                },
+                {
+                    "name": "registry_password",
+                    "type": "string",
+                    "value": "<ibmcloud_apikey_pull_schematics_runtime_images>",
+                    "secure": true
+                },
+                {
+                    "name": "LOGDNA_AGENT_KEY",
+                    "type": "string",
+                    "value": "<logdna_instance_ingestion_key>",
+                    "secure": true
+                },
+                {
+                    "name": "JR_SCHEMATICSENDPOINT",
+                    "type": "string",
+                    "value": "https://us-south.schematics.test.cloud.ibm.com"
+                },
+                {
+                    "name": "JR_APIKEY",
+                    "type": "string",
+                    "value": "<ibmcloud_stage_apikey>",
+                    "secure": true
+                },
+                {
+                    "name": "JR_ACCOUNTID",
+                    "type": "string",
+                    "value": "<ibmcloud_stage_accountid>"
+                },
+                {
+                    "name": "JR_REGION",
+                    "type": "string",
+                    "value": "us-south"
+                },
+                {
+                    "name": "JOB_ENVIRONMENT",
+                    "type": "string",
+                    "value": "stage"
+                },
+                {
+                    "name": "JOB_CMMODULESMACHINE",
+                    "type": "string",
+                    "value": "cm.globalcatalog.cloud.test.ibm.com"
+                }
+            ]
+        }
+    ]
+}
