@@ -20,15 +20,20 @@ resource "kubernetes_config_map" "jobrunner_configmap" {
     JR_HTTPPORT           = 2021
     JR_REGION             = var.location
     JR_IAMURL             = local.iam_url
-    JR_JOB12SERVICENAME   = "job-service-12-clusterip.schematics-runtime"
+    JR_JOB12SERVICENAME   = "job-service-12-clusterip.schematics-runtime.svc.cluster.local"
     JR_JOB12SERVICEPORT   = 3002
-    JR_SBOXSERVICENAME    = "sandbox-service.schematics-sandbox"
+    JR_SBOXSERVICENAME    = "sandbox-service.schematics-sandbox.svc.cluster.local"
     JR_SBOXSERVICEPORT    = 3000
     JR_COMPATMODE         = local.iam_compatmode
     JR_MAXJOBS            = 4
     JR_LOGGERLEVEL        = "-1"
     JR_ATLOGGERLEVEL      = "-1"
     JR_EXTLOGGERLEVEL     = "-1"
+    JR_ENABLETLS          = (local.tls_level != "disabled")
+    JR_ENABLEMTLS         = (local.tls_level == "mtls")
+    # JR_OPPONENTSCA        = local.server_ca
+    # JR_CERTPEM            = (local.tls_level == "mtls")?kubernetes_secret.agent-client-tls[0].data["tls.crt"]:""
+    # JR_KEYPEM             = (local.tls_level == "mtls")?kubernetes_secret.agent-client-tls[0].data["tls.key"]:""
   }
 
   depends_on = [kubernetes_namespace.namespace]
@@ -160,6 +165,33 @@ resource "kubernetes_deployment" "jobrunner" {
             name           = "job-runner-port"
             container_port = 2021
           }
+          env {
+            name = "JR_CERTPEM"
+            value_from {
+              secret_key_ref {
+                name = "agent-client-tls"
+                key = "tls.crt"
+              }
+            }
+          }
+          env {
+            name = "JR_KEYPEM"
+            value_from {
+              secret_key_ref {
+                name = "agent-client-tls"
+                key = "tls.key"
+              }
+            }
+          }
+          env {
+            name = "JR_OPPONENTSCA"
+            value_from {
+              secret_key_ref {
+                name = "agent-server-ca"
+                key = "ca.crt"
+              }
+            }
+          }
 
           env_from {
             config_map_ref {
@@ -212,5 +244,5 @@ resource "kubernetes_deployment" "jobrunner" {
     revision_history_limit = 5
   }
 
-  depends_on = [kubernetes_service.job_runner_loadbalancer, kubernetes_config_map.runtime_job_configmap]
+  depends_on = [kubernetes_service.job_runner_loadbalancer, kubernetes_config_map.runtime_job_configmap, kubernetes_secret.agent-client-tls, kubernetes_secret.agent-server-ca]
 }

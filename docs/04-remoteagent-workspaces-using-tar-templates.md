@@ -236,8 +236,8 @@ Note:
 | registry_password    | enter your prod ibmcloud api key to pull schematics agent images and mark this as `Sensitive`. |  |
 | LOGDNA_AGENT_KEY     | enter the ingestion key of the LogDNA instance that was created as part of Infrastructure Workspace and mark this as `Sensitive`. |  |
 | JR_SCHEMATICSENDPOINT | enter the target Schematics API endpoint. <br/> Initially, target the **Schematics Stage API**, override with `https://us.schematics.test.cloud.ibm.com` <br/> For the Schematics Agent feature in production, we will switch to Schematics Production Private CSE endpoint. | `https://private-us-south.schematics.test.cloud.ibm.com` |
-| JR_APIKEY            | enter your IBM Cloud APIKey and mark this as `Sensitive`. |  |
-| JR_ACCOUNTID         | enter your IBM Cloud Account ID. |  | 
+<!-- | JR_APIKEY            | enter your IBM Cloud APIKey and mark this as `Sensitive`. |  | -->
+<!-- | JR_ACCOUNTID         | enter your IBM Cloud Account ID. |  |  -->
 | JR_REGION            | enter the target region to deploy runtime services (should be same as IKS cluster region) |  |
 | JOB_ENVIRONMENT      | This is set to default `stage` value. | `stage` |
 | JOB_CMMODULESMACHINE | This is set to default stage global catalog endpoint. | `cm.globalcatalog.cloud.test.ibm.com` |
@@ -264,7 +264,7 @@ Note:
    LOGDNA_AGENT_KEY         Sensitive value stored on server   
    JR_SCHEMATICSENDPOINT    https://us-south.schematics.test.cloud.ibm.com   
    JR_APIKEY                Sensitive value stored on server   
-   JR_ACCOUNTID             16a85b7b99a6622e7c186fb6503781a0   
+   # JR_ACCOUNTID             16a85b7b99a6622e7c186fb6503781a0   
    JR_REGION                us-south   
    JOB_ENVIRONMENT          stage   
    JOB_CMMODULESMACHINE     cm.globalcatalog.cloud.test.ibm.com   

@@ -25,11 +25,11 @@ resource "kubernetes_config_map" "runtime_job_configmap" {
     TF_VAR_SCHEMATICSLOCATION      = var.location
     TF_CLI_CONFIG_FILE             = "/home/nobody/terraform-custom.config"
     MAX_TIMEOUT                    = 3600
-    JOB_ENABLETLS                  = false
-    JOB_ENABLEMTLS                 = false
-    # JOB_OPPONENTSCA                = var.JOB_OPPONENTSCA
-    # JOB_CERTPEM                    = var.JOB_CERTPEM
-    # JOB_KEYPEM                     = var.JOB_KEYPEM
+    JOB_ENABLETLS                  = (local.tls_level != "disabled")
+    JOB_ENABLEMTLS                 = (local.tls_level == "mtls")
+    # JOB_OPPONENTSCA                = local.client_ca
+    # JOB_CERTPEM                    = (local.tls_level != "disabled")?kubernetes_secret.agent-server-tls-runtime[0].data["tls.crt"]:""
+    # JOB_KEYPEM                     = (local.tls_level != "disabled")?kubernetes_secret.agent-server-tls-runtime[0].data["tls.key"]:""
   }
 
   depends_on = [kubernetes_namespace.namespace]
@@ -176,6 +176,34 @@ resource "kubernetes_deployment" "runtime_job" {
             }
           }
 
+          env {
+            name = "JOB_CERTPEM"
+            value_from {
+              secret_key_ref {
+                name = "agent-server-tls" 
+                key = "tls.crt"
+              }
+            }
+          }
+          env {
+            name = "JOB_KEYPEM"
+            value_from {
+              secret_key_ref {
+                name = "agent-server-tls" 
+                key = "tls.key"
+              }
+            }
+          }
+          env {
+            name = "JOB_OPPONENTSCA"
+            value_from {
+              secret_key_ref {
+                name = "agent-client-ca" 
+                key = "ca.crt"
+              }
+            }
+          }
+
           resources {
             limits = {
               cpu    = "500m"
@@ -221,7 +249,7 @@ resource "kubernetes_deployment" "runtime_job" {
     revision_history_limit = 5
   }
 
-  depends_on = [kubernetes_service.job_service, kubernetes_config_map.runtime_job_configmap]
+  depends_on = [kubernetes_service.job_service, kubernetes_config_map.runtime_job_configmap, kubernetes_secret.agent-server-tls-runtime, kubernetes_secret.agent-client-ca-runtime]
 }
 
 ##############################################################################

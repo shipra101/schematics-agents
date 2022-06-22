@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Schematics Agent is an Experimental feature, this guide describes the steps to deploy Schematics Agents micro-services on the infrastructure created in previous [step](https://github.ibm.com/schematics-solution/schematics-remote-agents/blob/master/docs/02-remoteagent-infrastructure-workspace.md) .
+Schematics Agent is an Experimental feature, this guide describes the steps to deploy Schematics Agents micro-services on the infrastructure created in previous [step](https://github.ibm.com/schematics-solution/schematics-remote-agents/blob/master/docs/02-remoteagent-infrastructure-workspace.md). 
 
 ## Summary of steps
 
@@ -42,6 +42,8 @@ The following Schematics Agent runtime resources will be provisioned in the **IK
    - schematics-jobrunner-image-secret (schematics-job-runtime namespace)
    - schematics-job12-image-secret (schematics-runtime namespace)
    - logdna-agent-token (schematics-ibm-observe namespace)
+   <!-- - job-runner-tls (schematics-job-runtime namespace)  If mtls is enabled
+   - job-tls (schematics-runtime namespace)             If tls is enabled -->
 5. configmaps:
    - schematics-jobrunner-config (schematics-job-runtime namespace)
    - schematics-job12-config (schematics-runtime namespace)
@@ -79,11 +81,22 @@ The following Schematics Agent runtime resources will be provisioned in the **IK
 | registry_password    | enter your prod ibmcloud api key to pull schematics agent images and mark this as `Sensitive`. |  |
 | LOGDNA_AGENT_KEY     | enter the ingestion key of the LogDNA instance that was created as part of Infrastructure Workspace and mark this as `Sensitive`. |  |
 | JR_SCHEMATICSENDPOINT | enter the target Schematics API endpoint. <br/> Initially, target the **Schematics Stage API**, override with `https://us.schematics.test.cloud.ibm.com` <br/> For the Schematics Agent feature in production, we will switch to Schematics Production Private CSE endpoint. | `https://private-us-south.schematics.test.cloud.ibm.com` |
-| JR_APIKEY            | enter your IBM Cloud APIKey and mark this as `Sensitive`. |  |
-| JR_ACCOUNTID         | enter your IBM Cloud Account ID. |  | 
+<!-- | JR_APIKEY            | enter your IBM Cloud APIKey and mark this as `Sensitive`. |  | -->
+<!-- | JR_ACCOUNTID         | enter your IBM Cloud Account ID. |  |  -->
 | JR_REGION            | enter the target region to deploy runtime services (should be same as IKS cluster region) |  |
 | JOB_ENVIRONMENT      | This is set to default `stage` value. | `stage` |
 | JOB_CMMODULESMACHINE | This is set to default stage global catalog endpoint. | `cm.globalcatalog.cloud.test.ibm.com` |
+<!-- | tls_level | This is the level of tls between job-runner and job | `tls` or `mtls` or `disabled` |
+| tls_cert_source | Source of the certificates if tls_level is not disabled. `self-signed` if you bring the certificate values | `secrets-manager` or `self-signed` |
+| sm_instance_guid | Instance ID of the secrets manager | e4a2f0a4-3c76-4bef-b1f2-fbeae11c0f21 |
+| sm_job_tls_id | Secret ID of the server side certificate and key | cb7a2502-8ede-47d6-b5b6-1b7af6b6f563 |
+| sm_job_runner_tls_id | Secret ID of the client side certificate and key | b7a2502s-8ede-47d6-b5b6-1b7af6b6f563 |
+| job_tls_self_crt | PEM format certificate value for server side | -----BEGIN CERTIFICATE-----\nMI..i\n-----END CERTIFICATE----- |
+| job_tls_self_key  | PEM format key value for server side | -----BEGIN CERTIFICATE-----\nMI..i\n-----END CERTIFICATE----- |
+| job_runner_tls_self_crt | PEM format certificate value for client side, if mtls | -----BEGIN CERTIFICATE-----\nMI..i\n-----END CERTIFICATE----- |
+| job_runner_tls_self_key | PEM format key value for client side, if mtls | -----BEGIN CERTIFICATE-----\nMI..i\n-----END CERTIFICATE----- |
+| root_ca | PEM format ca value. Same ca should be used sign both client and server certs, if mtls | -----BEGIN CERTIFICATE-----\nMI..i\n-----END CERTIFICATE----- | -->
+
 
 1. **Provision the `Schematics Agents Runtime Service`**
    1. Run Schematics Workspace plan: In the Workspace `schematics-agent-service-workspace` page 

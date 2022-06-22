@@ -16,7 +16,7 @@ The primary drivers for this feature are:
 
 The following figure illustrates the components of Schematics Agent, and how it works with Schematics and your Cloud infrastructure.
 
-![Agent bluering](agent-blueprint.png)
+![Agent blueprint](agent-blueprint.png)
 
 In order to run Schematics Agents in your Account, you have to setup the following 
 1. Agent infrastructure components:
@@ -27,6 +27,7 @@ In order to run Schematics Agents in your Account, you have to setup the followi
 2. Agent runtime service components
    * Schematics runtime services (Job Runner, Runtime-job)
    * Logging agents
+      <!-- // todo: - Do we need to add the secrets manager here  -->
 
 Note: 
 > Currently, the experimental feature requires the manual setup and configuration of the Schematics Agent.  

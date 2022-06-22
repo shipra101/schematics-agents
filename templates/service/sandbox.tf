@@ -26,6 +26,11 @@ resource "kubernetes_config_map" "sandbox" {
     SANDBOX_LOGGERLEVEL                = "-1"
     SANDBOX_SHUTDOWNREPORTINTERVAL     = "600"
     SANDBOX_WHITELISTEXTN              = ".tf,.tfvars,.md,.yaml,.sh,.txt,.yml,.html,.gitignore,.tf.json,license,.js,.pub,.service,_rsa,.py,.json,.tpl,.cfg,.ps1,.j2,.zip,.conf,.crt,.key,.der,.jacl,.properties,.cer,.pem,.tmpl,.netrc"
+    SANDBOX_ENABLETLS                  = (local.tls_level != "disabled")
+    SANDBOX_ENABLEMTLS                 = (local.tls_level == "mtls")
+    # SANDBOX_OPPONENTSCA                = local.client_ca
+    # SANDBOX_CERTPEM                    = (local.tls_level != "disabled")?kubernetes_secret.agent-server-tls-sandbox[0].data["tls.crt"]:""
+    # SANDBOX_KEYPEM                     = (local.tls_level != "disabled")?kubernetes_secret.agent-server-tls-sandbox[0].data["tls.key"]:""
   }
 }
 
@@ -176,6 +181,35 @@ resource "kubernetes_deployment" "sandbox" {
             }
           }
 
+          env {
+            name = "SANDBOX_CERTPEM"
+            value_from {
+              secret_key_ref {
+                name = "agent-server-tls"
+                key = "tls.crt"
+              }
+            }
+          }
+          env {
+            name = "SANDBOX_KEYPEM"
+            value_from {
+              secret_key_ref {
+                name = "agent-server-tls"
+                key = "tls.key"
+              }
+            }
+          }
+
+          env {
+            name = "SANDBOX_OPPONENTSCA"
+            value_from {
+              secret_key_ref {
+                name = "agent-client-ca"
+                key = "ca.crt"
+              }
+            }
+          }
+
           resources {
             limits = {
               cpu = "500m"
@@ -241,5 +275,5 @@ resource "kubernetes_deployment" "sandbox" {
     revision_history_limit    = 5
     progress_deadline_seconds = 600
   }
-  depends_on = [kubernetes_namespace.namespace, kubernetes_secret.schematics-sandbox-secret]
+  depends_on = [kubernetes_namespace.namespace, kubernetes_secret.schematics-sandbox-secret, kubernetes_secret.agent-server-tls-sandbox, kubernetes_secret.agent-client-ca-sandbox]
 }
