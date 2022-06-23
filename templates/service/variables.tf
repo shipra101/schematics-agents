@@ -1,7 +1,12 @@
-##############################################################################
-# Agent Runtime Services Variables
-# Copyright 2022 IBM
-##############################################################################
+###############################################################################
+# IBM Confidential
+# OCO Source Materials
+# IBM Cloud Schematics
+# (C) Copyright IBM Corp. 2022 All Rights Reserved.
+# The source code for this program is not  published or otherwise divested of
+# its trade secrets, irrespective of what has been deposited with
+# the U.S. Copyright Office.
+###############################################################################
 
 variable "agent_name" {
   description = "Name of the agent."
