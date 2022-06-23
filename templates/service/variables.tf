@@ -85,10 +85,4 @@ variable "ibmcloud_api_key" {
   default     = ""
 }
 
-# variable "logdna_key_name" {
-#   description = "Name of logdna instance key"
-#   type        = string
-#   default     = "gcat-multizone-logdna-key"
-# }
-
 ##############################################################################

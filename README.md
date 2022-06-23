@@ -1,2 +1,2 @@
-# schematics-remote-agents
+# schematics-agents
 Solution Templates for Schematics Remote Agent

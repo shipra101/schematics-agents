@@ -1,8 +1,8 @@
 # Multizone VPC With Bastion Subnet
 
-This module uses the [gcat-multitier-vpc](https://github.com/Cloud-Schematics/gcat-multitier-vpc) as a template to create a multizone VPC with a bastion subnet in one zone.
+This module uses the [multitier-vpc](https://github.com/Cloud-Schematics/gcat-multitier-vpc) as a template to create a multizone VPC with a bastion subnet in one zone.
 
-![Multiter VPC](./.docs/gcat-mz-bastion.png)
+![Multiter VPC](./.docs/mz-bastion.png)
 
 ---
 
@@ -122,14 +122,14 @@ list(
 Dynamic addresses are created for each subnet by name to ensure that modifying these lists will not result in unexpected changes to your existing infrastructure:
 
 ```terraform
-module.subnets.ibm_is_subnet.subnet["gcat-bastion-subnet-a"]
-module.subnets.ibm_is_subnet.subnet["gcat-vpc-subnet-a"]
-module.subnets.ibm_is_subnet.subnet["gcat-vpc-subnet-b"]
-module.subnets.ibm_is_subnet.subnet["gcat-vpc-subnet-c"]
-module.subnets.ibm_is_vpc_address_prefix.subnet_prefix["gcat-bastion-subnet-a"]
-module.subnets.ibm_is_vpc_address_prefix.subnet_prefix["gcat-vpc-subnet-a"]
-module.subnets.ibm_is_vpc_address_prefix.subnet_prefix["gcat-vpc-subnet-b"]
-module.subnets.ibm_is_vpc_address_prefix.subnet_prefix["gcat-vpc-subnet-c"]
+module.subnets.ibm_is_subnet.subnet["bastion-subnet-a"]
+module.subnets.ibm_is_subnet.subnet["vpc-subnet-a"]
+module.subnets.ibm_is_subnet.subnet["vpc-subnet-b"]
+module.subnets.ibm_is_subnet.subnet["vpc-subnet-c"]
+module.subnets.ibm_is_vpc_address_prefix.subnet_prefix["bastion-subnet-a"]
+module.subnets.ibm_is_vpc_address_prefix.subnet_prefix["vpc-subnet-a"]
+module.subnets.ibm_is_vpc_address_prefix.subnet_prefix["vpc-subnet-b"]
+module.subnets.ibm_is_vpc_address_prefix.subnet_prefix["vpc-subnet-c"]
 ```
 
 ### Address Prefixes
@@ -174,8 +174,8 @@ subnet_tier_list   | An object containing tiers, each key containing a list of s
 Be sure to remove the `provider` block froom [main.tf](./main.tf) before adding to an architecture.
 
 ```terraform
-module gcat_multizone_bastion {
-  source               = "./gcat_multizone_bastion"
+module multizone_bastion {
+  source               = "./multizone_bastion"
   prefix               = var.prefix
   region               = var.region
   resource_group       = var.resource_group
