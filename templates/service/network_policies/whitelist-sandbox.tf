@@ -1,7 +1,17 @@
+###############################################################################
+# IBM Confidential
+# OCO Source Materials
+# IBM Cloud Schematics
+# (C) Copyright IBM Corp. 2022 All Rights Reserved.
+# The source code for this program is not  published or otherwise divested of
+# its trade secrets, irrespective of what has been deposited with
+# the U.S. Copyright Office.
+###############################################################################
+
 resource "kubernetes_network_policy" "whitelist_sandbox" {
   metadata {
     name      = "whitelist-sandbox"
-    namespace = "schematics-sandbox"
+    namespace = var.schematics_sandbox
   }
 
   spec {
@@ -21,7 +31,7 @@ resource "kubernetes_network_policy" "whitelist_sandbox" {
       from {
         namespace_selector {
           match_labels = {
-            name = "schematics-job-runtime"
+            name = var.schematics_job_runtime
           }
         }
       }
@@ -74,6 +84,5 @@ resource "kubernetes_network_policy" "whitelist_sandbox" {
 
     policy_types = ["Ingress", "Egress"]
   }
-  depends_on = [kubernetes_deployment.sandbox]
 }
 

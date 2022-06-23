@@ -1,7 +1,17 @@
+###############################################################################
+# IBM Confidential
+# OCO Source Materials
+# IBM Cloud Schematics
+# (C) Copyright IBM Corp. 2022 All Rights Reserved.
+# The source code for this program is not  published or otherwise divested of
+# its trade secrets, irrespective of what has been deposited with
+# the U.S. Copyright Office.
+###############################################################################
+
 resource "kubernetes_network_policy" "whitelist_runtime_egress_gen_ports" {
   metadata {
     name      = "whitelist-runtime-egress-gen-ports"
-    namespace = "schematics-runtime"
+    namespace = var.schematics_runtime
   }
 
   spec {
@@ -87,6 +97,5 @@ resource "kubernetes_network_policy" "whitelist_runtime_egress_gen_ports" {
 
     policy_types = ["Egress"]
   }
-  depends_on = [kubernetes_deployment.runtime_job]
 }
 

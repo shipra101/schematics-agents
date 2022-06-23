@@ -1,7 +1,12 @@
-##############################################################################
-# Account Variables
-# Copyright 2020 IBM
-##############################################################################
+###############################################################################
+# IBM Confidential
+# OCO Source Materials
+# IBM Cloud Schematics
+# (C) Copyright IBM Corp. 2022 All Rights Reserved.
+# The source code for this program is not  published or otherwise divested of
+# its trade secrets, irrespective of what has been deposited with
+# the U.S. Copyright Office.
+###############################################################################
 
 variable "agent_prefix" {
   description = "You will use this prefix, for vpc, cluster and  observability. (Max length 27 chars)"

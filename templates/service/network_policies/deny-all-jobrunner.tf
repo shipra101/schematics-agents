@@ -8,18 +8,22 @@
 # the U.S. Copyright Office.
 ###############################################################################
 
-##############################################################################
-# Terraform Providers
-##############################################################################
-
-terraform {
-  required_providers {
-    ibm = {
-      source = "IBM-Cloud/ibm"
-      version = "~>1.42.0"
-    }
+resource "kubernetes_network_policy" "deny_all_jobrunner" {
+  metadata {
+    name      = "deny-all-jobrunner"
+    namespace = var.schematics_job_runtime
   }
-  experiments = [ module_variable_optional_attrs ]
+
+  spec {
+    pod_selector {
+      match_expressions {
+        key      = "app"
+        operator = "In"
+        values   = ["jobrunner"]
+      }
+    }
+
+    policy_types = ["Egress", "Ingress"]
+  }
 }
 
-##############################################################################

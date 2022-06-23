@@ -8,18 +8,20 @@
 # the U.S. Copyright Office.
 ###############################################################################
 
-##############################################################################
-# Terraform Providers
-##############################################################################
-
-terraform {
-  required_providers {
-    ibm = {
-      source = "IBM-Cloud/ibm"
-      version = "~>1.42.0"
-    }
-  }
-  experiments = [ module_variable_optional_attrs ]
+variable "schematics_job_runtime" {
+  description = "Schematics Job Runtime namespace"
+  type        = string
+  default     = "schematics-job-runtime"
 }
 
-##############################################################################
+variable "schematics_sandbox" {
+  description = "Schematics Sandbox namespace"
+  type        = string
+  default     = "schematics-sandbox"
+}
+
+variable "schematics_runtime" {
+  description = "Schematics Runtime namespace"
+  type        = string
+  default     = "schematics-runtime"
+}

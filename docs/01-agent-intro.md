@@ -1,6 +1,6 @@
 # Schematics Agents
 
-**Schematics Remote Agents** is a new experimental feature introduced by IBM Cloud Schematics that allows users to run automation workloads (Terraform, Ansible) on their own cloud infrastructure, thereby providing them more flexibility and control. 
+**Schematics Agents** is a new experimental feature introduced by IBM Cloud Schematics that allows users to run automation workloads (Terraform, Ansible) on their own cloud infrastructure, thereby providing them more flexibility and control. 
 
 The primary drivers for this feature are:
 

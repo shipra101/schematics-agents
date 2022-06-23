@@ -1,7 +1,17 @@
+###############################################################################
+# IBM Confidential
+# OCO Source Materials
+# IBM Cloud Schematics
+# (C) Copyright IBM Corp. 2022 All Rights Reserved.
+# The source code for this program is not  published or otherwise divested of
+# its trade secrets, irrespective of what has been deposited with
+# the U.S. Copyright Office.
+###############################################################################
+
 resource "kubernetes_network_policy" "whitelist_egress_jobrunner" {
   metadata {
     name      = "whitelist-egress-jobrunner"
-    namespace = "schematics-job-runtime"
+    namespace = var.schematics_job_runtime
   }
 
   spec {
@@ -49,6 +59,5 @@ resource "kubernetes_network_policy" "whitelist_egress_jobrunner" {
 
     policy_types = ["Ingress", "Egress"]
   }
-  depends_on = [kubernetes_deployment.jobrunner]
 }
 

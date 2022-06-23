@@ -1,3 +1,13 @@
+###############################################################################
+# IBM Confidential
+# OCO Source Materials
+# IBM Cloud Schematics
+# (C) Copyright IBM Corp. 2022 All Rights Reserved.
+# The source code for this program is not  published or otherwise divested of
+# its trade secrets, irrespective of what has been deposited with
+# the U.S. Copyright Office.
+###############################################################################
+
 #DONOT EDIT THIS FILE UNLESS YOU ARE SURE WHAT YOU ARE DOING
 
 locals {
@@ -20,4 +30,11 @@ locals {
 locals {
   #Config dir where the cluster config will be downloaded
   config_dir = "/tmp"
+  #Define namespaces
+  namespaces = {
+    schematics_job_runtime = "schematics-job-runtime"
+    schematics_sandbox     = "schematics-sandbox"
+    schematics_runtime     = "schematics-runtime"
+    logdna_agent           = "schematics-ibm-observe"
+  }
 }

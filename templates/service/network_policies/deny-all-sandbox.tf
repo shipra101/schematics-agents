@@ -8,18 +8,20 @@
 # the U.S. Copyright Office.
 ###############################################################################
 
-##############################################################################
-# Terraform Providers
-##############################################################################
-
-terraform {
-  required_providers {
-    ibm = {
-      source = "IBM-Cloud/ibm"
-      version = "~>1.42.0"
-    }
+resource "kubernetes_network_policy" "deny_all_sandbox" {
+  metadata {
+    name      = "deny-all-sandbox"
+    namespace = var.schematics_sandbox
   }
-  experiments = [ module_variable_optional_attrs ]
+
+  spec {
+    pod_selector {
+      match_labels = {
+        app = "sandbox"
+      }
+    }
+
+    policy_types = ["Egress", "Ingress"]
+  }
 }
 
-##############################################################################
