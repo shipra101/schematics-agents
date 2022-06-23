@@ -11,7 +11,7 @@
 resource "kubernetes_network_policy" "runtime_ingress_job" {
   metadata {
     name      = "runtime-ingress-job"
-    namespace = "schematics-runtime"
+    namespace = var.schematics_runtime
   }
 
   spec {
@@ -32,7 +32,7 @@ resource "kubernetes_network_policy" "runtime_ingress_job" {
       from {
         namespace_selector {
           match_labels = {
-            name = "schematics-job-runtime"
+            name = var.schematics_job_runtime
           }
         }
       }
@@ -40,7 +40,7 @@ resource "kubernetes_network_policy" "runtime_ingress_job" {
       from {
         pod_selector {
           match_labels = {
-            microservice = "schematics-job-runtime"
+            microservice = var.schematics_job_runtime
           }
         }
       }
@@ -48,6 +48,5 @@ resource "kubernetes_network_policy" "runtime_ingress_job" {
 
     policy_types = ["Ingress"]
   }
-  depends_on = [kubernetes_deployment.runtime_job]
 }
 

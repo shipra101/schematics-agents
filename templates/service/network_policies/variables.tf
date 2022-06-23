@@ -8,23 +8,20 @@
 # the U.S. Copyright Office.
 ###############################################################################
 
-resource "kubernetes_network_policy" "deny_all_jobrunner" {
-  metadata {
-    name      = "deny-all-jobrunner"
-    namespace = "schematics-job-runtime"
-  }
-
-  spec {
-    pod_selector {
-      match_expressions {
-        key      = "app"
-        operator = "In"
-        values   = ["jobrunner"]
-      }
-    }
-
-    policy_types = ["Egress", "Ingress"]
-  }
-  depends_on = [kubernetes_deployment.jobrunner]
+variable "schematics_job_runtime" {
+  description = "Schematics Job Runtime namespace"
+  type        = string
+  default     = "schematics-job-runtime"
 }
 
+variable "schematics_sandbox" {
+  description = "Schematics Sandbox namespace"
+  type        = string
+  default     = "schematics-sandbox"
+}
+
+variable "schematics_runtime" {
+  description = "Schematics Runtime namespace"
+  type        = string
+  default     = "schematics-runtime"
+}

@@ -8,12 +8,6 @@
 # the U.S. Copyright Office.
 ###############################################################################
 
-
-##############################################################################
-# Account Variables
-# Copyright 2020 IBM
-##############################################################################
-
 variable "agent_prefix" {
   description = "You will use this prefix, for vpc, cluster and  observability. (Max length 27 chars)"
   type        = string

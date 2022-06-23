@@ -11,7 +11,7 @@
 resource "kubernetes_network_policy" "whitelist_egress_jobrunner" {
   metadata {
     name      = "whitelist-egress-jobrunner"
-    namespace = "schematics-job-runtime"
+    namespace = var.schematics_job_runtime
   }
 
   spec {
@@ -59,6 +59,5 @@ resource "kubernetes_network_policy" "whitelist_egress_jobrunner" {
 
     policy_types = ["Ingress", "Egress"]
   }
-  depends_on = [kubernetes_deployment.jobrunner]
 }
 

@@ -30,4 +30,11 @@ locals {
 locals {
   #Config dir where the cluster config will be downloaded
   config_dir = "/tmp"
+  #Define namespaces
+  namespaces = {
+    schematics_job_runtime = "schematics-job-runtime"
+    schematics_sandbox     = "schematics-sandbox"
+    schematics_runtime     = "schematics-runtime"
+    logdna_agent           = "schematics-ibm-observe"
+  }
 }

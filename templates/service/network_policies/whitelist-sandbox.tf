@@ -8,18 +8,40 @@
 # the U.S. Copyright Office.
 ###############################################################################
 
-resource "kubernetes_network_policy" "whitelist_runtime_egress_gen_ports" {
+resource "kubernetes_network_policy" "whitelist_sandbox" {
   metadata {
-    name      = "whitelist-runtime-egress-gen-ports"
-    namespace = "schematics-runtime"
+    name      = "whitelist-sandbox"
+    namespace = var.schematics_sandbox
   }
 
   spec {
     pod_selector {
-      match_expressions {
-        key      = "app"
-        operator = "In"
-        values   = ["runtime-job"]
+      match_labels = {
+        app = "sandbox"
+      }
+    }
+
+    ingress {
+      ports {
+        port = "3000"
+      }
+    }
+
+    ingress {
+      from {
+        namespace_selector {
+          match_labels = {
+            name = var.schematics_job_runtime
+          }
+        }
+      }
+
+      from {
+        pod_selector {
+          match_labels = {
+            microservice = "jobrunner"
+          }
+        }
       }
     }
 
@@ -58,45 +80,9 @@ resource "kubernetes_network_policy" "whitelist_runtime_egress_gen_ports" {
         protocol = "TCP"
         port     = "22"
       }
-
-      ports {
-        protocol = "TCP"
-        port     = "10250"
-      }
-
-      ports {
-        protocol = "UDP"
-        port     = "10250"
-      }
-
-      ports {
-        protocol = "TCP"
-        port     = "8080"
-      }
-
-      ports {
-        protocol = "UDP"
-        port     = "9092"
-      }
-
-      ports {
-        protocol = "UDP"
-        port     = "9093"
-      }
-
-      ports {
-        protocol = "TCP"
-        port     = "9092"
-      }
-
-      ports {
-        protocol = "TCP"
-        port     = "9093"
-      }
     }
 
-    policy_types = ["Egress"]
+    policy_types = ["Ingress", "Egress"]
   }
-  depends_on = [kubernetes_deployment.runtime_job]
 }
 

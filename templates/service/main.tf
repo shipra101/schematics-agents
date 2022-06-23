@@ -53,17 +53,6 @@ provider "kubernetes" {
 # create all the requires namespaces for the services
 ##############################################################################
 
-
-
-locals {
-  namespaces = {
-    schematics_job_runtime = "schematics-job-runtime"
-    schematics_sandbox     = "schematics-sandbox"
-    schematics_runtime     = "schematics-runtime"
-    logdna_agent           = "schematics-ibm-observe"
-  }
-}
-
 resource "kubernetes_namespace" "namespace" {
   for_each = local.namespaces
   metadata {
@@ -72,6 +61,14 @@ resource "kubernetes_namespace" "namespace" {
     }
     name = each.value
   }
+}
+
+module "network_policies" {
+  source = "./network_policies"
+  schematics_job_runtime = local.namespaces.schematics_job_runtime
+  schematics_sandbox = local.namespaces.schematics_sandbox
+  schematics_runtime = local.namespaces.schematics_runtime
+  depends_on = [kubernetes_deployment.runtime_job, kubernetes_deployment.jobrunner, kubernetes_deployment.sandbox]
 }
 
 

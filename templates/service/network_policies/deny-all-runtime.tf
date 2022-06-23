@@ -11,7 +11,7 @@
 resource "kubernetes_network_policy" "deny_all_runtime" {
   metadata {
     name      = "deny-all-runtime"
-    namespace = "schematics-runtime"
+    namespace = var.schematics_runtime
   }
 
   spec {
@@ -25,6 +25,5 @@ resource "kubernetes_network_policy" "deny_all_runtime" {
 
     policy_types = ["Egress", "Ingress"]
   }
-  depends_on = [kubernetes_deployment.runtime_job]
 }
 
