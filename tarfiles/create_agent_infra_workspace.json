@@ -13,49 +13,24 @@
             "type": "terraform_v0.13",
             "variablestore": [
                 {
-                    "name": "user_logdna_name",
+                    "name": "agent_prefix",
                     "type": "string",
-                    "value": "remote-agent-logdna-test"
+                    "value": "myproject-agent"
                 },
                 {
-                    "name": "user_resource_key_name",
+                    "name": "location",
                     "type": "string",
-                    "value": "remote-agent-cos-key-test"
+                    "value": "us-south"
                 },
                 {
-                    "name": "user_cos_instance_name",
-                    "type": "string",
-                    "value": "remote-agent-cos-test"
-                },
-                {
-                    "name": "user_storage_bucket_name",
-                    "type": "string",
-                    "value": "remote-agent-cos-bucket-test"
-                },
-                {
-                    "name": "user_resource_group_name",
+                    "name": "resource_group_name",
                     "type": "string",
                     "value": "Default"
                 },
                 {
-                    "name": "user_create_vpc",
-                    "type": "bool",
-                    "value": "true"
-                },
-                {
-                    "name": "user_vpc_name",
+                    "name": "tags",
                     "type": "string",
-                    "value": "remoteagent-vpc-test"
-                },
-                {
-                    "name": "create_cluster",
-                    "type": "bool",
-                    "value": "true"
-                },
-                {
-                    "name": "user_cluster_name",
-                    "type": "string",
-                    "value": "remoteagent-iks-test"
+                    "value": "[myproject:agent]"
                 }
             ]
         }

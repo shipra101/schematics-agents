@@ -13,57 +13,39 @@
             "type": "terraform_v0.13",
             "variablestore": [
                 {
-                    "name": "user_cluster_id",
+                    "name": "cluster_id",
                     "type": "string",
                     "value": "<target_iks_cluster_ID"
                 },
                 {
-                    "name": "user_resource_group_id",
+                    "name": "resource_group_name",
                     "type": "string",
                     "value": "<target_resource_group_ID>"
                 },
                 {
-                    "name": "registry_password",
+                    "name": "logdna_name",
                     "type": "string",
-                    "value": "<ibmcloud_apikey_pull_schematics_runtime_images>",
-                    "secure": true
+                    "value": "<target_logdna_name>"
                 },
                 {
-                    "name": "LOGDNA_AGENT_KEY",
+                    "name": "schematics_endpoint_location",
                     "type": "string",
-                    "value": "<logdna_instance_ingestion_key>",
-                    "secure": true
+                    "value": "us"
                 },
                 {
-                    "name": "JR_SCHEMATICSENDPOINT",
+                    "name": "profile_id",
                     "type": "string",
-                    "value": "https://us-south.schematics.test.cloud.ibm.com"
+                    "value": "<IAM_Trusted_Profile_Id>"
                 },
                 {
-                    "name": "JR_APIKEY",
-                    "type": "string",
-                    "value": "<ibmcloud_stage_apikey>",
-                    "secure": true
-                },
-                {
-                    "name": "JR_ACCOUNTID",
-                    "type": "string",
-                    "value": "<ibmcloud_stage_accountid>"
-                },
-                {
-                    "name": "JR_REGION",
+                    "name": "location",
                     "type": "string",
                     "value": "us-south"
                 },
                 {
-                    "name": "JOB_ENVIRONMENT",
+                    "name": "agent_name",
                     "type": "string",
-                    "value": "stage"
-                },
-                {
-                    "name": "JOB_CMMODULESMACHINE",
-                    "type": "string",
-                    "value": "cm.globalcatalog.cloud.test.ibm.com"
+                    "value": "my-project"
                 }
             ]
         }

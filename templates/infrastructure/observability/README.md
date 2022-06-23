@@ -6,11 +6,11 @@ This module creates a LogDNA instance and a Sysdig Instance in a single region i
 
 Name                    | Type         | Description                                                                                                   | Default
 ----------------------- | ------------ | ------------------------------------------------------------------------------------------------------------- | ----------------------
-prefix                  | string       | A unique identifier need to provision resources. Must begin with a letter                                     | fs-refarch-dev
+enable_observability    | bool         | True to create new Observability Services. False if Observability Service instances are already existing. | |
+prefix                  | string       | A unique identifier need to provision resources. Must begin with a letter                                     | my-project
 region                  | string       | Region where resources will be created                                                                        | us-south
 resource_group_id       | string       | ID of the resource group where instances will be created                                                      | 
-tags                    | list(string) | A list of tags to be added to resources                                                                       | [ "fs-cloud-refarch" ]
-sysdig_plan             | string       | Type of sysdig plan. Can be `graduated-tier` or `graduated-tier-sysdig-secure-plus-monitor`                   | graduated-tier
+tags                    | list(string) | A list of tags to be added to 
 logdna_plan             | string       | Type of logdna and activity tracker plan. Can be `14-day`, `30-day`, `7-day`, or `hipaa-30-day`               | 7-day
 create_activity_tracker | bool         | Create activity tracker. Only one instance of activity tracker can be provisioned per region in each account. | false
 service_endpoints       | string       | Service endpoints. Can be `public`, `private`, or `public-and-private`                                        | private
