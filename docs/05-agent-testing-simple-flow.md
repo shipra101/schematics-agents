@@ -10,9 +10,9 @@ Schematics Agent is an Experimental feature, this guide describes the steps to t
 4. Destroy the resources created by the Schematics Workspace.
 
 ## Pre-req
-A) The `Schematics Agents Infrastructure Workspace` must be `ACTIVE` - Refer to the guide [02-remoteagent-infrastructure-workspace.md](https://github.ibm.com/schematics-solution/schematics-remote-agents/blob/master/docs/02-remoteagent-infrastructure-workspace.md).
+A) The `Schematics Agents Infrastructure Workspace` must be `ACTIVE` - Refer to the guide [02-remoteagent-infrastructure-workspace.md](https://github.com/Cloud-Schematics/schematics-agents/blob/develop/docs/02-agent-infrastructure-workspace.md).
 
-B) The `Schematics Agents Runtime Services Workspace` must be `ACTIVE` - Refer to the guide [03-remoteagent-service-workspace.md](https://github.ibm.com/schematics-solution/schematics-remote-agents/blob/master/docs/03-remoteagent-service-workspace.md).
+B) The `Schematics Agents Runtime Services Workspace` must be `ACTIVE` - Refer to the guide [03-remoteagent-service-workspace.md](https://github.com/Cloud-Schematics/schematics-agents/blob/develop/docs/03-agent-service-workspace.md).
 
 ## Expected outcome:
 1. The plan workload will be run in **your** IKS Cluster that was created as part of the **Schematics Agents Setup.**
@@ -74,7 +74,7 @@ B) The `Schematics Agents Runtime Services Workspace` must be `ACTIVE` - Refer t
 ## Viewing the workload logs in your Schematics Agents Setup
 1. Navigate to the LogDNA instance created as part of **Schematics Agents Setup.** in your IBM Cloud production account.
    - Logging page - https://cloud.ibm.com/observe/logging
-   - Click on `remote-agent-logdna` instance
+   - Click on `agent-logdna` instance
    - From the logging instance overview page, click on `Open Dashboard` button
 2. From the LogDNA instance logs view page, validate the jobrunner logs.
    - Filter App > `jobrunner` 
@@ -115,7 +115,7 @@ B) The `Schematics Agents Runtime Services Workspace` must be `ACTIVE` - Refer t
     Jan 6 11:14:57 job12-75cb5d994b-ng5hz job12 info {"level":"info","utc_date":"2022-01-06T05:44:57.678Z","caller":"cmd/terraform_job.go:523","msg":"Finished command: terraform13 destroy -state=terraform.tfstate -var-file=schematics.tfvars -force -lock=false -no-color","component":"SCHEMATICS-JOB","requestid":"0ebffdee-5a26-4d35-a66e-2004ffb47df4"} 
     ```
 
-## Cleanup the RemoteAgent Test Workspace
-To delete the `test-remoteagent-workspace` Schematics Workspace : From the Workspace Details page, click on `Actions` > `Delete workspace` > `Delete` button.
+## Cleanup the Agent Test Workspace
+To delete the `test-agent-workspace` Schematics Workspace : From the Workspace Details page, click on `Actions` > `Delete workspace` > `Delete` button.
 
 ## Troubleshooting

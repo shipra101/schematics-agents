@@ -50,13 +50,13 @@ You can use Schematics workspaces, to run these Terraform automation:
 
 ### Use the Agent.tar file
 
-The Terraform automation to deploy the `Agents Infrastructure` & `Agents Runtime Services` is packaged into a Agent.tar file.  Follow this guide - [04-remoteagent-workspaces-using-tar-templates](https://github.ibm.com/schematics-solution/schematics-remote-agents/blob/master/docs/04-remoteagent-workspaces-using-tar-templates.md) to use this tar file and create the `Schematics Agents Infrastructure Workspace` & `Schematics Agents Runtime Services Workspace`.  Further, you can use these workspaces the provision the Schematics Agent components.
+The Terraform automation to deploy the `Agents Infrastructure` & `Agents Runtime Services` is packaged into a Agent.tar file.  Follow this guide - [04-agent-workspaces-using-tar-templates](https://github.com/Cloud-Schematics/schematics-agents/blob/main/docs/04-agent-workspaces-using-tar-templates.md) to use this tar file and create the `Schematics Agents Infrastructure Workspace` & `Schematics Agents Runtime Services Workspace`.  Further, you can use these workspaces the provision the Schematics Agent components.
 
 ### Use the Agent terraform templates
 
-If you have access to the [Git repo to the Terraform template for Schematics Agent](https://github.ibm.com/schematics-solution/schematics-remote-agents/tree/master/templates), then follow these guides:
-1. Create `Schematics Agents Infrastructure Workspace` - use this guide [02-remoteagent-infrastructure-workspace](https://github.ibm.com/schematics-solution/schematics-remote-agents/blob/master/docs/02-remoteagent-infrastructure-workspace.md)
-2. Create `Schematics Agents Runtime Services Workspace` - use this guide [03-remoteagent-service-workspace](https://github.ibm.com/schematics-solution/schematics-remote-agents/blob/master/docs/03-remoteagent-service-workspace.md)
+If you have access to the [Git repo to the Terraform template for Schematics Agent](https://github.com/Cloud-Schematics/schematics-agents/tree/main/templates), then follow these guides:
+1. Create `Schematics Agents Infrastructure Workspace` - use this guide [02-agent-infrastructure-workspace](https://github.com/Cloud-Schematics/schematics-agents/blob/main/docs/02-agent-infrastructure-workspace.md)
+2. Create `Schematics Agents Runtime Services Workspace` - use this guide [03-agent-service-workspace](https://github.com/Cloud-Schematics/schematics-agents/blob/main/docs/03-agent-service-workspace.md)
 
 Further, you can use these workspace the provision the Schematics Agent components.
 

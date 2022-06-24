@@ -36,7 +36,7 @@ Note:
 1. **Create a new `Schematics Agents Infrastructure Workspace`**
    1. Login to IBM Cloud - https://cloud.ibm.com/
    2. Navigate to Schematics > Workspaces Create : https://cloud.ibm.com/schematics/workspaces/create
-      - Specify Template - https://github.ibm.com/schematics-solution/schematics-remote-agents/tree/docs/templates/infrastructure
+      - Specify Template - https://github.com/Cloud-Schematics/schematics-agents/tree/main/templates/infrastructure
       - Select Terraform Version - `terraform_v0.13`
       - Click `Next`
       - Enter a Workspace Name - `schematics-agent-infra-workspace` (example)
@@ -51,17 +51,11 @@ Note:
 
 | Input variable  | Description                          | Example         |
 |---------------------------|--------------------------------------|-----------------|
-| user_logdna_name          | enter a name for the new LogDNA instance | `remote-agent-logdna-demo` |
-| user_resource_key_name    | enter a name of the key instance to be created and attached with cos bucket | `remote-agent-cos-key-demo` |
-| user_cos_instance_name    | enter a name for the new COS instance | `remote-agent-cos-demo` |
-| user_storage_bucket_name  | enter a name for the new COS bucket - name should be unique across users | `remote-agent-cos-bucket-demo` |
-| user_resource_group_name  | enter name of Resource Group where infrastructure resources will be provisioned. If not specified, resources will be created under `Default` resource group | | 
-| user_create_vpc           | true, to create a new VPC. <br/> false, to reuse an existing VPC | | 
-| user_vpc_name             | enter the name of the new VPC that must be created in the `us-south` region (if user_create_vpc == true) | `remoteagent-vpc` |
-| vpc_id                    | enter the existing VPC ID in the `us-south` region, that will be reused (if user_create_vpc == false) | |
-| create_cluster            | true, to create a new IKS cluster on the VPC. <br/> false, to reuse an existing IKS on VPC, in the `us-south` region | |
-| user_cluster_name         | enter the name of the new IKS cluster that must be created in VPC | `remoteagent-iks` |
-
+| agent_prefix          | You will use this prefix, for vpc, cluster and  observability. (Max length 27 chars) | `my-project` |
+| location    | Location of the agent infrastructure.  Note: For Beta, the agent must be deployed in a freshly provisioned VPC, IKS Cluster, Log Analysis instance. | `us-south` |
+| resource_group_name  | enter name of Resource Group where infrastructure resources will be provisioned. | | 
+| tags           |  A list of tags for the agent infrastructure | my-project:agent | 
+| ibmcloud_api_key             | The IBM Cloud API Key used to provision the schematics agent infrastructure resources. If not provided, then resources will be provisioned in currently logged in user account. | |
 
 2. **Provision the `Schematics Agents Infrastructure`**
    1. Run Schematics Workspace plan:  In the Workspace `schematics-agent-infra-workspace` page 
@@ -78,16 +72,16 @@ Note:
    1. Navigate to the IBM Cloud Resources Page - https://cloud.ibm.com/resources
    2. Filter by tags - `schematics:<workspace_ID>`
    3. Verify Resources
-      - VPC Infrastructure : `remoteagent-vpc` > Status: `Available`
-      - Services and Software : `remoteagent-logdna` > Status: `Active`
-      - Storage: `remoteagent-cos` > Status: `Active`
-      - Clusters: `remoteagent-iks` > Status: `Normal`
+      - VPC Infrastructure : `agent-vpc` > Status: `Available`
+      - Services and Software : `agent-logdna` > Status: `Active`
+      - Storage: `agent-cos` > Status: `Active`
+      - Clusters: `agent-iks` > Status: `Normal`
 
 ## How to provision in EU-FR2 region
 >Steps to be added - for eu-fr2 region
 
-## Cleanup the Remote Agents Infrastructure
-Follow the given steps to cleanup the Remote Agents Infrastructure
+## Cleanup the Agents Infrastructure
+Follow the given steps to cleanup the Agents Infrastructure
 1. Open the Schematics Workspace - https://cloud.ibm.com/schematics/workspaces/<workspace_id_schematics-agent-infra-workspace>
 2. Select `Actions` > `Destroy resources` > "Type the name of workspace" > Click `Destroy`
 3. Workspace `schematics-agent-infra-workspace` page > **Jobs** tab
