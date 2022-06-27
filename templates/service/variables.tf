@@ -40,7 +40,7 @@ variable "resource_group_name" {
 
 variable "profile_id" {
   default     = ""
-  description = "The IBM Cloud IAM Trusted Profile ID which provides authorization for agents to process jobs. More info can be found here: https://cloud.ibm.com/docs/account?topic=account-create-trusted-profile&interface=ui"
+  description = "The IBM Cloud [IAM Trusted Profile ID](https://cloud.ibm.com/docs/account?topic=account-create-trusted-profile&interface=ui) which provides authorization for agents to process jobs."
   type        = string
   sensitive   = true
 }
