@@ -27,7 +27,7 @@ variable "location" {
 }
 
 variable "resource_group_name" {
-  description = "Name of resource group used for agent infrastructure and agent service."
+  description = "Name of resource group used where agent infrastructure was provisioned"
   type        = string
 
   # validation {
@@ -52,7 +52,7 @@ variable "schematics_endpoint_location" {
   default     = "us-south"
 
   validation {
-    condition     = contains(["us","eu","us-south","us-east","eu-de","eu-gb"], var.schematics_endpoint_location)
+    condition     = contains(["us", "eu", "us-south", "us-east", "eu-de", "eu-gb"], var.schematics_endpoint_location)
     error_message = "Invalid input, options: \"us\", \"eu\", \"us-south\", \"us-east\", \"eu-de\", \"eu-gb\"."
   }
 }

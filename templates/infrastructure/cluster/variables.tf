@@ -162,28 +162,3 @@ variable "worker_pools" {
 }
 
 ##############################################################################
-
-
-##############################################################################
-# Resource Variables
-##############################################################################
-
-variable "cos_id" {
-  description = "ID of COS instance"
-  type        = string
-  default     = null
-}
-
-variable "kms_guid" {
-  description = "GUID of Key Protect Instance"
-  type        = string
-  default     = null
-}
-
-variable "key_id" {
-  description = "GUID of User Managed Key"
-  type        = string
-  default     = null
-}
-
-##############################################################################

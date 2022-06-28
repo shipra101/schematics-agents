@@ -20,8 +20,8 @@ resource "kubernetes_config_map" "jobrunner_configmap" {
   }
 
   data = {
-    JR_PROFILEID         = var.profile_id
-    JR_AGENTNAME         = var.agent_name
+    JR_PROFILEID          = var.profile_id
+    JR_AGENTNAME          = var.agent_name
     JR_SCHEMATICSENDPOINT = local.schematics_endpoint
     JR_EXTLOGPATH         = "/var/log/schematics/%s.log"
     JR_SAVESERVICECOPY    = true
@@ -39,6 +39,8 @@ resource "kubernetes_config_map" "jobrunner_configmap" {
     JR_LOGGERLEVEL        = "-1"
     JR_ATLOGGERLEVEL      = "-1"
     JR_EXTLOGGERLEVEL     = "-1"
+    JR_AGENTVERSION       = "1.0.0"
+    JR_FEATUREFLAGS       = "AgentRegistration:true"
   }
 
   depends_on = [kubernetes_namespace.namespace]

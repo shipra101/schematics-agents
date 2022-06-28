@@ -33,7 +33,7 @@ Link this repository to the schematics workspace and run `Generate Plan` and `Ap
 | ---------- | -------- | -------------- | ---------- | ----------- | ----------- |
 | agent_prefix | You will use this prefix, for vpc, cluster and  observability. (Max length 27 chars) |  |  | my-project |  |
 | location | Location of the agent infrastructure.  Note: For Beta, the agent must be deployed in a freshly provisioned VPC, IKS Cluster, Log Analysis instance. |  |  | us-south |  |
-| resource_group_name | Name of resource group used for agent infrastructure and agent service. | string | &check; | |  |
+| resource_group_name | Name of resource group used where agent infrastructure was provisioned. | string | &check; | |  |
 | tags | A list of tags for the agent infrastructure | list(string) | | my-project:agent | |
 | ibmcloud_api_key | The IBM Cloud API Key used to provision the schematics agent infrastructure resources. If not provided, then resources will be provisioned in currently logged in user account. | string | | | &check; |
 

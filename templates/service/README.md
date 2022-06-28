@@ -25,7 +25,7 @@ Link this repository to the schematics workspace and run `Generate Plan` and `Ap
 | ---------- | -------- | -------------- | ---------- | ----------- | ----------- |
 | agent_name | Name of the agent. | string | | my-project | |
 | location| Location of the agent services.  It must be the same as the agent infrastructure/cluster location. | string | | us-south | |
-| resource_group_name | Name of resource group used for agent infrastructure and agent service. | string | &check; | | |
+| resource_group_name | Name of resource group used where agent infrastructure was provisioned. | string | &check; | | |
 | profile_id | The IBM Cloud IAM Trusted Profile ID which provides authorization for agents to process jobs. More info can be found [here](https://cloud.ibm.com/docs/account?topic=account-create-trusted-profile&interface=ui) | string | &check; | | &check; |
 | schematics_endpoint_location | Location of the schematics endpoint. This location is used to connect your agent with schematics service. The valid locations are us/eu/us-south/us-east/eu-de/eu-gb | string | | us-south | |
 | cluster_id | ID of the cluster used to run the agent service. | string | &check; | | |
