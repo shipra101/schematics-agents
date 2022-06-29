@@ -111,7 +111,7 @@ resource "kubernetes_deployment" "runtime_job" {
   }
 
   spec {
-    replicas = 3
+    replicas = 1
 
     selector {
       match_labels = {
