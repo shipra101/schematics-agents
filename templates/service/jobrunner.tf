@@ -180,17 +180,7 @@ resource "kubernetes_deployment" "jobrunner" {
             }
           }
 
-          resources {
-            limits = {
-              cpu    = "500m"
-              memory = "1Gi"
-            }
-
-            requests = {
-              cpu    = "500m"
-              memory = "1Gi"
-            }
-          }
+          
 
           volume_mount {
             name       = "at-events"

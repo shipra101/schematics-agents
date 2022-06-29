@@ -186,19 +186,7 @@ resource "kubernetes_deployment" "sandbox" {
             }
           }
 
-          resources {
-            limits = {
-              cpu = "500m"
-
-              memory = "1Gi"
-            }
-
-            requests = {
-              cpu = "500m"
-
-              memory = "1Gi"
-            }
-          }
+          
 
           volume_mount {
             name       = "at-events"
