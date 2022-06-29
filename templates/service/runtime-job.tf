@@ -186,18 +186,7 @@ resource "kubernetes_deployment" "runtime_job" {
             }
           }
 
-          resources {
-            limits = {
-              cpu    = "500m"
-              memory = "1Gi"
-            }
-
-            requests = {
-              cpu    = "500m"
-              memory = "1Gi"
-            }
-          }
-
+         
           volume_mount {
             name       = "at-events"
             mount_path = "/var/log/at"
