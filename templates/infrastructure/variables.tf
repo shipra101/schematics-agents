@@ -26,7 +26,7 @@ variable "location" {
 }
 
 variable "resource_group_name" {
-  description = "Name of resource group used for agent infrastructure and agent service."
+  description = "Name of resource group used where agent infrastructure was provisioned"
   type        = string
 
   # validation  {
@@ -53,7 +53,7 @@ variable "ibmcloud_api_key" {
   description = "The IBM Cloud API Key used to provision the schematics agent infrastructure resources. If not provided, then resources will be provisioned in currently logged in user account."
   type        = string
   sensitive   = true
-   default     = ""
+  default     = ""
 }
 
 ##############################################################################

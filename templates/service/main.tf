@@ -64,11 +64,11 @@ resource "kubernetes_namespace" "namespace" {
 }
 
 module "network_policies" {
-  source = "./network_policies"
+  source                 = "./network_policies"
   schematics_job_runtime = local.namespaces.schematics_job_runtime
-  schematics_sandbox = local.namespaces.schematics_sandbox
-  schematics_runtime = local.namespaces.schematics_runtime
-  depends_on = [kubernetes_deployment.runtime_job, kubernetes_deployment.jobrunner, kubernetes_deployment.sandbox]
+  schematics_sandbox     = local.namespaces.schematics_sandbox
+  schematics_runtime     = local.namespaces.schematics_runtime
+  depends_on             = [kubernetes_deployment.runtime_job, kubernetes_deployment.jobrunner, kubernetes_deployment.sandbox]
 }
 
 

@@ -43,14 +43,6 @@ resource "ibm_resource_instance" "logdna" {
   tags              = var.tags
 }
 
-resource "ibm_resource_key" "logdna_key" {
-  count                = var.enable_observability == true ? 1 : 0
-  name                 = "${var.prefix}-logdna-key"
-  role                 = "Manager"
-  resource_instance_id = ibm_resource_instance.logdna[0].id
-  tags                 = var.tags
-}
-
 ##############################################################################
 
 

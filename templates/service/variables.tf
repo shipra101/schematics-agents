@@ -27,7 +27,7 @@ variable "location" {
 }
 
 variable "resource_group_name" {
-  description = "Name of resource group used for agent infrastructure and agent service."
+  description = "Name of resource group used where agent infrastructure was provisioned"
   type        = string
 
   # validation {
@@ -40,7 +40,7 @@ variable "resource_group_name" {
 
 variable "profile_id" {
   default     = ""
-  description = "The IBM Cloud IAM Trusted Profile ID which provides authorization for agents to process jobs. More info can be found here: https://cloud.ibm.com/docs/account?topic=account-create-trusted-profile&interface=ui"
+  description = "The IBM Cloud [IAM Trusted Profile ID](https://cloud.ibm.com/docs/account?topic=account-create-trusted-profile&interface=ui) which provides authorization for agents to process jobs."
   type        = string
   sensitive   = true
 }
@@ -52,7 +52,7 @@ variable "schematics_endpoint_location" {
   default     = "us-south"
 
   validation {
-    condition     = contains(["us","eu","us-south","us-east","eu-de","eu-gb"], var.schematics_endpoint_location)
+    condition     = contains(["us", "eu", "us-south", "us-east", "eu-de", "eu-gb"], var.schematics_endpoint_location)
     error_message = "Invalid input, options: \"us\", \"eu\", \"us-south\", \"us-east\", \"eu-de\", \"eu-gb\"."
   }
 }

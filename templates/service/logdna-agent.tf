@@ -18,8 +18,9 @@ data "ibm_resource_instance" "logdna" {
   resource_group_id = data.ibm_resource_group.resource_group.id
 }
 
-data "ibm_resource_key" "logdna_key" {
+resource "ibm_resource_key" "logdna_key" {
   name                 = "${var.logdna_name}-key"
+  role                 = "Manager"
   resource_instance_id = data.ibm_resource_instance.logdna.id
 }
 
@@ -37,7 +38,7 @@ resource "kubernetes_config_map" "logdna_agent" {
   }
 
   data = {
-    logdna-agent-key = data.ibm_resource_key.logdna_key.credentials["ingestion_key"]
+    logdna-agent-key = ibm_resource_key.logdna_key.credentials["ingestion_key"]
     logdna-host      = "logs.private.${var.location}.logging.cloud.ibm.com"
   }
 
