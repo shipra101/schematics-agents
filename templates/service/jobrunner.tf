@@ -82,8 +82,6 @@ resource "kubernetes_service" "job_runner_loadbalancer" {
     selector = {
       app = "jobrunner"
     }
-
-    type = "LoadBalancer"
   }
 
   depends_on = [kubernetes_namespace.namespace]
