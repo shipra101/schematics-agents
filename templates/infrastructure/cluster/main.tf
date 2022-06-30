@@ -19,7 +19,7 @@ resource "ibm_container_cluster" "cluster" {
   hardware        = "shared"
   public_vlan_id  = "vlan"
   private_vlan_id = "vlan"
-  resource_group_id    = var.resource_group.id
+  resource_group_id    = var.resource_group_id
   datacenter        = "mil01"
   
   default_pool_size = 1
