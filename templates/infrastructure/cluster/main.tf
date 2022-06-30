@@ -20,6 +20,7 @@ resource "ibm_container_cluster" "agent_cluster" {
   public_vlan_id  = "vlan"
   private_vlan_id = "vlan"
   resource_group_id    = data.ibm_resource_group.resource_group.id
+  datacenter        = "mil01"
   
   default_pool_size = 1
 

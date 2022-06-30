@@ -45,21 +45,6 @@ variable "resource_group_id" {
 # VPC Variables
 ##############################################################################
 
-variable "vpc_id" {
-  description = "ID of VPC where cluster is to be created"
-  type        = string
-}
-
-variable "subnets" {
-  description = "A map containing cluster subnet IDs and subnet zones"
-  type = list(object({
-    id   = string
-    zone = string
-    cidr = string
-    name = string
-  }))
-}
-
 ##############################################################################
 
 
@@ -70,18 +55,7 @@ variable "subnets" {
 variable "machine_type" {
   description = "The flavor of VPC worker node to use for your cluster. Use `ibmcloud ks flavors` to find flavors for a region."
   type        = string
-  default     = "bx2.4x16"
-}
-
-variable "workers_per_zone" {
-  description = "Number of workers to provision in each subnet"
-  type        = number
-  default     = 1
-
-  # validation {
-  #     error_message = "Each zone must contain at least 2 workers."
-  #     condition     = var.workers_per_zone >= 2
-  # }
+  default     = "free"
 }
 
 variable "kube_version" {
@@ -122,43 +96,6 @@ variable "tags" {
   #     false if !can(regex("^([a-z]|[a-z][-a-z0-9]*[a-z0-9])$", name))
   #   ]) == 0
   # }
-}
-
-variable "worker_pools" {
-  description = "List of maps describing worker pools"
-
-  type = list(object({
-    name             = string
-    machine_type     = string
-    workers_per_zone = number
-  }))
-
-  default = []
-
-  validation {
-    error_message = "Worker pool names must match the regex `^([a-z]|[a-z][-a-z0-9]*[a-z0-9])$`."
-    condition = length([
-      for pool in var.worker_pools :
-      false if !can(regex("^([a-z]|[a-z][-a-z0-9]*[a-z0-9])$", pool.name))
-    ]) == 0
-  }
-
-  validation {
-    error_message = "Worker pools cannot have duplicate names."
-    condition = length(distinct([
-      for pool in var.worker_pools :
-      pool.name
-    ])) == length(var.worker_pools)
-  }
-
-  validation {
-    error_message = "Worker pools must have at least two workers per zone."
-    condition = length([
-      for pool in var.worker_pools :
-      false if pool.workers_per_zone < 2
-    ]) == 0
-  }
-
 }
 
 ##############################################################################
