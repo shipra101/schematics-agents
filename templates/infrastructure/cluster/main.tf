@@ -12,7 +12,7 @@
 # Create IKS/ROKS on VPC Cluster
 ##############################################################################
 
-resource "ibm_container_cluster" "agent_cluster" {
+resource "ibm_container_cluster" "cluster" {
   count           = var.create_cluster ? 1 : 0
   name            = "${var.prefix}-cluster"
   machine_type    = var.machine_type
