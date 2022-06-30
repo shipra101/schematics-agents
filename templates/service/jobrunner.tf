@@ -82,8 +82,7 @@ resource "kubernetes_service" "job_runner_loadbalancer" {
     selector = {
       app = "jobrunner"
     }
-
-    type = "LoadBalancer"
+    // type = "LoadBalancer" // Not needed, since there is no outbound connection
   }
 
   depends_on = [kubernetes_namespace.namespace]
