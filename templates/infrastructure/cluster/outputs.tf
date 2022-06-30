@@ -16,14 +16,14 @@ output "id" {
   description = "ID of cluster created"
   value       = ibm_container_cluster.cluster[0].id
   # Ensure cluster is finished before outputting variable from module
-  depends_on = [ibm_container_vpc_cluster.cluster]
+  depends_on = [ibm_container_cluster.cluster]
 }
 
 output "name" {
   description = "Name of cluster created"
-  value       = ibm_container_vpc_cluster.cluster[0].name
+  value       = ibm_container_cluster.cluster[0].name
   # Ensure cluster is finished before outputting variable from module
-  depends_on = [ibm_container_vpc_cluster.cluster]
+  depends_on = [ibm_container_cluster.cluster]
 }
 
 ##############################################################################
