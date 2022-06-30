@@ -95,7 +95,7 @@ locals {
 locals {
   #Cluster locals
   #The flavor of VPC worker node to use for your cluster. Use `ibmcloud ks flavors` to find flavors for a region.
-  machine_type = "bx2.4x16"
+  machine_type = "free"
   #Number of workers to provision in each subnet
   workers_per_zone = 1
   #To avoid long wait times when you run your Terraform code, you can specify the stage when you want Terraform to mark the cluster resource creation as completed.

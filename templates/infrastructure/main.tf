@@ -67,15 +67,6 @@ data "ibm_container_cluster_versions" "cluster_versions" {
   region = var.location
 }
 
-locals {
-  # Get latest openshift version
-  # https://cloud.ibm.com/docs/openshift?topic=openshift-openshift_versions
-  latest = "${
-    data.ibm_container_cluster_versions.cluster_versions.valid_openshift_versions[
-      length(data.ibm_container_cluster_versions.cluster_versions.valid_openshift_versions) - 1
-  ]}_openshift"
-}
-
 module "vpc_cluster" {
   count          = (local.create_cluster ? 1 : 0)
   create_cluster = local.create_cluster
