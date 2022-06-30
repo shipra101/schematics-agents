@@ -22,7 +22,6 @@ resource "ibm_container_vpc_cluster" "cluster" {
   kube_version      = length(regexall(".*openshift", var.kube_version)) > 0 ? var.kube_version : null
   tags              = var.tags
   wait_till         = var.wait_till
-  cos_instance_crn  = length(regexall(".*openshift", var.kube_version)) > 0 ? var.cos_id : null
   dynamic "zones" {
     for_each = var.subnets
     content {
