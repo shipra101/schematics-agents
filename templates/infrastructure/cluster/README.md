@@ -24,7 +24,7 @@ wait_till | string | To avoid long wait times when you run your Terraform code, 
 ## Example Usage
 
 ```hcl-terraform
-module "vpc_cluster" {
+module "classic_cluster" {
   create_cluster = var.create_cluster
   source         = "./cluster"
   # Account Variables

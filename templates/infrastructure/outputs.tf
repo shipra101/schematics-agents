@@ -28,12 +28,12 @@
 
 output "cluster_id" {
   description = "ID of cluster created"
-  value       = module.vpc_cluster.*.id
+  value       = module.classic_cluster.*.id
 }
 
 output "cluster_name" {
   description = "Name of cluster created"
-  value       = module.vpc_cluster.*.name
+  value       = module.classic_cluster.*.name
 }
 
 

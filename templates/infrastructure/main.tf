@@ -67,7 +67,7 @@ data "ibm_container_cluster_versions" "cluster_versions" {
   region = var.location
 }
 
-module "vpc_cluster" {
+module "classic_cluster" {
   count          = (local.create_cluster ? 1 : 0)
   create_cluster = local.create_cluster
   source         = "./cluster"
