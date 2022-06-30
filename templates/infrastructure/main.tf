@@ -86,10 +86,8 @@ module "vpc_cluster" {
   resource_group_id = data.ibm_resource_group.resource_group.id
   # Cluster Variables
   machine_type     = local.machine_type
-  workers_per_zone = local.workers_per_zone
   kube_version     = local.kube_version #local.latest
   tags             = var.tags
-  worker_pools     = local.worker_pools
 }
 
 ##############################################################################
