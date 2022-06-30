@@ -23,7 +23,7 @@ variable "agent_name" {
 variable "location" {
   description = "Location of the agent services.  It must be the same as the agent infrastructure/cluster location."
   type        = string
-  default     = "us-south"
+  default     = "mil01"
 }
 
 variable "resource_group_name" {
