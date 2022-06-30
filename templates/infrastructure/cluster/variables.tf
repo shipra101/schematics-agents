@@ -38,7 +38,16 @@ variable "resource_group_id" {
   type        = string
 }
 
+
 ##############################################################################
+# Cluster Variables
+##############################################################################
+
+variable "machine_type" {
+  description = "The flavor of VPC worker node to use for your cluster. Use `ibmcloud ks flavors` to find flavors for a region."
+  type        = string
+  default     = "free"
+}
 
 variable "kube_version" {
   description = "Specify the Kubernetes version, including the major.minor version. To see available versions, run `ibmcloud ks versions`."
