@@ -40,23 +40,6 @@ data "ibm_resource_group" "resource_group" {
 
 ##############################################################################
 
-##############################################################################
-# Create VPC
-##############################################################################
-
-module "multizone_vpc" {
-  count                = (local.create_cluster ? 1 : 0)
-  create_vpc           = local.create_cluster
-  source               = "./vpc"
-  prefix               = var.agent_prefix
-  region               = var.location
-  resource_group_id    = data.ibm_resource_group.resource_group.id
-  classic_access       = local.classic_access
-  subnet_tiers         = local.subnet_tiers
-  use_public_gateways  = local.use_public_gateways
-  network_acls         = local.network_acls
-  security_group_rules = local.security_group_rules
-}
 
 ##############################################################################
 
@@ -101,9 +84,6 @@ module "vpc_cluster" {
   prefix            = var.agent_prefix
   region            = var.location
   resource_group_id = data.ibm_resource_group.resource_group.id
-  # VPC Variables
-  vpc_id  = (local.create_cluster ? module.multizone_vpc[0].vpc_id : 0)
-  subnets = module.multizone_vpc[0].subnet_tier_list["vpc"]
   # Cluster Variables
   machine_type     = local.machine_type
   workers_per_zone = local.workers_per_zone
