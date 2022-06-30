@@ -22,11 +22,6 @@ output "logdna_guid" {
   value       = ibm_resource_instance.logdna[0].guid
 }
 
-output "logdna_resource_key" {
-  description = "ID for logdna resource key"
-  value       = ibm_resource_key.logdna_key[0].id
-}
-
 output "logdna_name" {
   description = "Name of the logdna instance"
   value       = ibm_resource_instance.logdna[0].name
