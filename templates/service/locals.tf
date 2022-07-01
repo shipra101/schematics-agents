@@ -12,7 +12,7 @@
 
 locals {
   #"IAM endpoint url"
-  iam_url = "https://iam.cloud.ibm.com/"
+  iam_url = "https://iam.cloud.ibm.com"
   #IAM compatmode (false for stage/prod)
   iam_compatmode = "false"
   #Schematics endpoint url (optional: private CSE or VPE)
