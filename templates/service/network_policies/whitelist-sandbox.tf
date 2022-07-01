@@ -58,6 +58,16 @@ resource "kubernetes_network_policy" "whitelist_sandbox" {
 
       ports {
         protocol = "TCP"
+        port     = "5986"
+      }
+
+      ports {
+        protocol = "TCP"
+        port     = "22"
+      }
+
+      ports {
+        protocol = "TCP"
         port     = "53"
       }
 
@@ -71,15 +81,6 @@ resource "kubernetes_network_policy" "whitelist_sandbox" {
         port     = "443"
       }
 
-      ports {
-        protocol = "TCP"
-        port     = "5986"
-      }
-
-      ports {
-        protocol = "TCP"
-        port     = "22"
-      }
     }
 
     policy_types = ["Ingress", "Egress"]

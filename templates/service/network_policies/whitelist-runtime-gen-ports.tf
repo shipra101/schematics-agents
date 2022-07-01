@@ -40,18 +40,13 @@ resource "kubernetes_network_policy" "whitelist_runtime_egress_gen_ports" {
       }
 
       ports {
-        protocol = "UDP"
-        port     = "53"
-      }
-
-      ports {
-        protocol = "UDP"
-        port     = "443"
+        protocol = "TCP"
+        port     = "5986"
       }
 
       ports {
         protocol = "TCP"
-        port     = "5986"
+        port     = "8080"
       }
 
       ports {
@@ -65,16 +60,31 @@ resource "kubernetes_network_policy" "whitelist_runtime_egress_gen_ports" {
       }
 
       ports {
+        protocol = "TCP"
+        port     = "9092"
+      }
+
+      ports {
+        protocol = "TCP"
+        port     = "9093"
+      }
+
+      ports {
+        protocol = "UDP"
+        port     = "53"
+      }
+
+      ports {
+        protocol = "UDP"
+        port     = "443"
+      }
+
+      ports {
         protocol = "UDP"
         port     = "10250"
       }
 
       ports {
-        protocol = "TCP"
-        port     = "8080"
-      }
-
-      ports {
         protocol = "UDP"
         port     = "9092"
       }
@@ -84,15 +94,6 @@ resource "kubernetes_network_policy" "whitelist_runtime_egress_gen_ports" {
         port     = "9093"
       }
 
-      ports {
-        protocol = "TCP"
-        port     = "9092"
-      }
-
-      ports {
-        protocol = "TCP"
-        port     = "9093"
-      }
     }
 
     policy_types = ["Egress"]
