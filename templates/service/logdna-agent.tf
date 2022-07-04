@@ -51,7 +51,7 @@ resource "kubernetes_service_account" "logdna_agent" {
     namespace = "schematics-ibm-observe"
   }
 
-  depends_on = [kubernetes_config_map.logdna_agent]
+  depends_on = [kubernetes_config_map.logdna_agent, kubernetes_namespace.namespace]
 }
 
 resource "kubernetes_cluster_role" "logdna_agent" {
@@ -86,7 +86,7 @@ resource "kubernetes_role" "logdna_agent" {
     resources  = ["configmaps"]
   }
 
-  depends_on = [kubernetes_cluster_role.logdna_agent]
+  depends_on = [kubernetes_cluster_role.logdna_agent, kubernetes_namespace.namespace]
 }
 
 resource "kubernetes_role_binding" "logdna_agent" {
@@ -107,7 +107,7 @@ resource "kubernetes_role_binding" "logdna_agent" {
     name      = "logdna-agent"
   }
 
-  depends_on = [kubernetes_role.logdna_agent]
+  depends_on = [kubernetes_role.logdna_agent, kubernetes_namespace.namespace]
 }
 
 resource "kubernetes_cluster_role_binding" "logdna_agent" {
@@ -318,7 +318,7 @@ resource "kubernetes_daemonset" "logdna_agent" {
     }
   }
 
-  depends_on = [kubernetes_cluster_role_binding.logdna_agent]
+  depends_on = [kubernetes_cluster_role_binding.logdna_agent, kubernetes_namespace.namespace]
 }
 
 

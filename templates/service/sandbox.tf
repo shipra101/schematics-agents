@@ -37,6 +37,7 @@ resource "kubernetes_config_map" "sandbox" {
     SANDBOX_SHUTDOWNREPORTINTERVAL     = "600"
     SANDBOX_WHITELISTEXTN              = ".tf,.tfvars,.md,.yaml,.sh,.txt,.yml,.html,.gitignore,.tf.json,license,.js,.pub,.service,_rsa,.py,.json,.tpl,.cfg,.ps1,.j2,.zip,.conf,.crt,.key,.der,.jacl,.properties,.cer,.pem,.tmpl,.netrc"
   }
+  depends_on = [kubernetes_namespace.namespace]
 }
 
 
@@ -56,6 +57,7 @@ resource "kubernetes_secret" "schematics-sandbox-secret" {
     })
   }
   type = "kubernetes.io/dockerconfigjson"
+  depends_on = [kubernetes_namespace.namespace]
 }
 
 //creating service
@@ -80,6 +82,7 @@ resource "kubernetes_service" "sandbox_service" {
     type             = "ClusterIP"
     session_affinity = "None"
   }
+  depends_on = [kubernetes_namespace.namespace]
 }
 
 //creating deployment

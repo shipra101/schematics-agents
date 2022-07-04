@@ -63,6 +63,7 @@ resource "kubernetes_secret" "schematics-jobrunner-image-secret" {
     })
   }
   type = "kubernetes.io/dockerconfigjson"
+  depends_on = [kubernetes_namespace.namespace]
 }
 
 
