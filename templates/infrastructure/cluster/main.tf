@@ -9,7 +9,7 @@
 ###############################################################################
 
 ##############################################################################
-# Create IKS/ROKS on VPC Cluster
+# Create IKS on Classic Cluster
 ##############################################################################
 
 resource "ibm_container_cluster" "cluster" {
@@ -20,7 +20,6 @@ resource "ibm_container_cluster" "cluster" {
   public_vlan_id  = "vlan"
   private_vlan_id = "vlan"
   resource_group_id    = var.resource_group_id
-  datacenter        = "mil01"
   
   default_pool_size = 1
 
