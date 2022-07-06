@@ -22,7 +22,7 @@ resource "kubernetes_config_map" "jobrunner_configmap" {
   data = {
     JR_PROFILEID          = var.profile_id
     JR_AGENTNAME          = var.agent_name
-    JR_AGENT_LOCATION     = var.location
+    JR_AGENTLOCATION     = var.location
     JR_SCHEMATICSENDPOINT = local.schematics_endpoint
     JR_EXTLOGPATH         = "/var/log/schematics/%s.log"
     JR_SAVESERVICECOPY    = true
