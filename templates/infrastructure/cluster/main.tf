@@ -15,17 +15,13 @@
 resource "ibm_container_cluster" "cluster" {
   count           = var.create_cluster ? 1 : 0
   name            = "${var.prefix}-cluster"
-  machine_type    = var.machine_type
+  machine_type    = var.machine_type //it's always free
   hardware        = "shared"
   public_vlan_id  = "vlan"
   private_vlan_id = "vlan"
   resource_group_id    = var.resource_group_id
-  
+  tags = var.tags
   default_pool_size = 1
-
-  labels = {
-    "test" = "test-pool"
-  }
-
+  region = var.region
 }
 ##############################################################################
