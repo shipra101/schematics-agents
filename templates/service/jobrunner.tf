@@ -23,6 +23,7 @@ resource "kubernetes_config_map" "jobrunner_configmap" {
     JR_PROFILEID          = var.profile_id
     JR_AGENTNAME          = var.agent_name
     JR_AGENTLOCATION     = var.location
+    JR_ALLOWMULTIPLEAGENTS = "true"
     JR_SCHEMATICSENDPOINT = local.schematics_endpoint
     JR_EXTLOGPATH         = "/var/log/schematics/%s.log"
     JR_SAVESERVICECOPY    = true
