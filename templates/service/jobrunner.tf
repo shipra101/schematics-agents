@@ -23,6 +23,7 @@ resource "kubernetes_config_map" "jobrunner_configmap" {
     JR_PROFILEID          = var.profile_id
     JR_AGENTNAME          = var.agent_name
     JR_AGENTLOCATION     = var.location
+    JR_ALLOWMULTIPLEAGENTS = "true"
     JR_SCHEMATICSENDPOINT = local.schematics_endpoint
     JR_EXTLOGPATH         = "/var/log/schematics/%s.log"
     JR_SAVESERVICECOPY    = true
@@ -56,7 +57,7 @@ resource "kubernetes_secret" "schematics-jobrunner-image-secret" {
   data = {
     ".dockerconfigjson" = jsonencode({
       auths = {
-        "us.icr.io" = {
+        "icr.io" = {
           auth = base64encode("iamapikey:${var.ibmcloud_api_key}")
         }
       }
