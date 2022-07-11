@@ -22,6 +22,6 @@ resource "ibm_container_cluster" "cluster" {
   resource_group_id    = var.resource_group_id
   tags = var.tags
   default_pool_size = 1
-  region = var.region
+  datacenter = "mil01"
 }
 ##############################################################################
