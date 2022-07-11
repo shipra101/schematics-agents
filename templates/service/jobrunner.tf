@@ -226,5 +226,5 @@ resource "kubernetes_deployment" "jobrunner" {
     revision_history_limit = 5
   }
 
-  depends_on = [kubernetes_service.job_runner_loadbalancer, kubernetes_config_map.runtime_job_configmap]
+  depends_on = [kubernetes_service.job_runner_loadbalancer, kubernetes_config_map.runtime_job_configmap, kubernetes_secret.schematics-jobrunner-image-secret]
 }

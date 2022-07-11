@@ -1,7 +1,7 @@
 {
     "name": "schematics-remote-service-workspace",
     "type": [
-        "terraform_v0.13"
+        "terraform_v1.0"
     ],
     "description": "schematics agents runtime services workspace",
     "template_repo": {
@@ -10,12 +10,12 @@
     "template_data": [
         {
             "folder": ".",
-            "type": "terraform_v0.13",
+            "type": "terraform_v1.0",
             "variablestore": [
                 {
                     "name": "cluster_id",
                     "type": "string",
-                    "value": "<target_iks_cluster_ID"
+                    "value": "<target_iks_cluster_ID>"
                 },
                 {
                     "name": "resource_group_name",
