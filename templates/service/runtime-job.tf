@@ -232,7 +232,7 @@ resource "kubernetes_deployment" "runtime_job" {
     revision_history_limit = 5
   }
 
-  depends_on = [kubernetes_service.job_service, kubernetes_config_map.runtime_job_configmap, kubernetes_namespace.namespace]
+  depends_on = [kubernetes_service.job_service, kubernetes_config_map.runtime_job_configmap, kubernetes_namespace.namespace, kubernetes_secret.schematics-job-secret]
 }
 
 ##############################################################################

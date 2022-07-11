@@ -1,7 +1,7 @@
 {
     "name": "schematics-agent-infra-workspace",
     "type": [
-        "terraform_v0.13"
+        "terraform_v1.0"
     ],
     "description": "schematics agents infra workspace",
     "template_repo": {
@@ -10,7 +10,7 @@
     "template_data": [
         {
             "folder": ".",
-            "type": "terraform_v0.13",
+            "type": "terraform_v1.0",
             "variablestore": [
                 {
                     "name": "agent_prefix",
@@ -26,11 +26,6 @@
                     "name": "resource_group_name",
                     "type": "string",
                     "value": "Default"
-                },
-                {
-                    "name": "tags",
-                    "type": "string",
-                    "value": "[myproject:agent]"
                 }
             ]
         }
