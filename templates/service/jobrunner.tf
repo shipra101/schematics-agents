@@ -37,7 +37,7 @@ resource "kubernetes_config_map" "jobrunner_configmap" {
     JR_SBOXSERVICENAME    = "sandbox-service.schematics-sandbox"
     JR_SBOXSERVICEPORT    = 3000
     JR_COMPATMODE         = local.iam_compatmode
-    JR_MAXJOBS            = 4
+    JR_MAXJOBS            = 3
     JR_LOGGERLEVEL        = "-1"
     JR_ATLOGGERLEVEL      = "-1"
     JR_EXTLOGGERLEVEL     = "-1"
