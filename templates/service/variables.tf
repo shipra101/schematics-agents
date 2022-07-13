@@ -49,7 +49,7 @@ variable "profile_id" {
 variable "schematics_endpoint_location" {
   description = "Location of the schematics endpoint. This location is used to connect your agent with schematics service. The valid locations are us|eu|us-south|us-east|eu-de|eu-gb"
   type        = string
-  default     = "us-south"
+  default     = "us"
 
   validation {
     condition     = contains(["us", "eu", "eu-de", "eu-gb", "eu-fr"], var.schematics_endpoint_location)
