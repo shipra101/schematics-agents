@@ -90,11 +90,11 @@ Click [here](https://cloud.ibm.com/docs/schematics?topic=schematics-agents-setup
 
 ## Outputs
 
-<The expected output need to be added>
+- Click [here](https://cloud.ibm.com/docs/schematics?topic=schematics-agents-setup&interface=ui#agents-setup-infra-output) to view the Agent infrastructure workspace setup. 
+- Click [here](https://cloud.ibm.com/docs/schematics?topic=schematics-agents-setup&interface=ui#agents-setup-svc) to view the outcome of deploying an Agent service workspace.
 
 ## Next Steps
 
 You have completed the Agent connection to your Schematics service instance.
-
-    - Now, you need to bind the Agent to your Workspace, and to use an Agent, in order to run the IaC automation in your cluster.
-    
+   - Now, you need to [register your Agent](https://cloud.ibm.com/docs/schematics?topic=schematics-register-agent&interface=ui#register-ui) service with your Schematics service instance.
+   - And, to use an Agent, you need to [bind the Agent](https://cloud.ibm.com/docs/schematics?topic=schematics-using-agent&interface=ui#steps-bind-new-wks) to new Workspace or existing workspace, in order to run the IaC automation in your cluster.
