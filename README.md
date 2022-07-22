@@ -2,18 +2,19 @@
 
 The IBM Cloud Schematics Agents extends Schematics ability to reach your private, or on-premises, infrastructure. Integrate the Schematics Agents running in your private network to the IBM Cloud Schematics service to provision, configure, and operate your private or on-premise cloud cluster resources without any time, network, or software restrictions.
 
-This Agent repository helps users to provision the infrastructure required for an Agent and deploys the services on the provisioned infrastructure.
+This Agent repository helps you to provision the infrastructure required for an Agent and deploys the services on the provisioned infrastructure.
 
 ## Table of Contents
 
 1. [Prerequisites](##Prerequisites)
 2. [Agents deployment](##Agents-Deployment)
-3. [Infrastructure](##Infrastructure)
-4. [Service](##Service)
-5. [Requirements](##Requirements)
-6. [Inputs](##Inputs)
-7. [Outputs](##Outputs)
-8. [Next Steps](##Next-Steps)
+3. [Using tar files](##Using-Tar-Files)
+4. [Infrastructure](##Infrastructure)
+5. [Service](##Service)
+6. [Terraform versions](##Terraform-Versions)
+7. [Inputs](##Inputs)
+8. [Outputs](##Outputs)
+9. [Next Steps](##Next-Steps)
 
 ## Prerequisites
 
@@ -22,8 +23,13 @@ This Agent repository helps users to provision the infrastructure required for a
 3. Make sure that you have the [required IBM Cloud IAM permissions](https://cloud.ibm.com/docs/containers?topic=containers-access_reference) to create and work with IBM Cloud Cluster.
 4. Make sure that you have the [required IBM Cloud IAM permissions](https://cloud.ibm.com/docs/log-analysis?topic=log-analysis-iam) to create and work with IBM Log Analysis.
 5. Make sure that you have the [required IBM Cloud IAM permissions](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-iam) to create and work with IBM Activity tracker.
-6. The `Terraform` version should be `~> 1.0`.
-7. The `Terraform ibm provider` version should be `~> 1.42`.
+
+## Terraform versions
+
+|  **Name**                  | **Version** |
+|  --------------------------| -------------|
+|  terraform                 | ~> 1.0 |
+|  terraform_provider_ibm    | ~> 1.42 |
 
 ## Agents deployment
 
@@ -35,37 +41,34 @@ This repository has `.tf` configuration for the deployment of Agent infrastructu
 |   └── service
 ```
 
+## Using tar files
+
+The respository contains the solution templates in the form of `tar` files to install the `Agent infrastructure` and deploy the `Agent service`. Perform following steps to use the `tar` file.
+
+- Download the `/templates/templates.zip` file to your local system.
+- From your terminal extract the content of `zip` file using the command. `unzip templates.zip`
+- The templates as TAR files should now be available as
+   - The `agent-infrastructure-templates.tar` for setting up the VPC, IKS cluster, and LogDNA services infrastructure. 
+   - The `agent-service-templates.tar` to deploy the Agent service into your infrastructure. 
+
 ## Infrastructure
     
-This is an terraform configuration which provisions Agent Infrastructure on IBM Cloud.
-
-A collection of services that will provisioned on IBM Cloud. Here are the list of services
+The `agent-infrastructure-templates.tar` is a Terraform configuration archive files which provisions Agent infrastructure on IBM Cloud. A collection of following services are provisioned.
 - VPC
 - IBM Kubernetes cluster
 - IBM Log Analysis
 - Activity Tracker
 
-Link this repository to the Schematics Workspace and run `Generate Plan` and `Apply Plan` to create the Agent infrastructure.
+Click [here](https://cloud.ibm.com/docs/schematics?topic=schematics-agents-setup&interface=ui#agents-setup-infra-ui) to use the Agent infrastructure `tar` file. Link this repository to the Schematics Workspace and run `Generate Plan` and `Apply Plan` to create the Agent infrastructure.
     
 ## Service
 
-This contains Terraform configuration which deploys Agent services on Infrastructure.
-
-A collection of Agent-related microservices deployed on the Agent Infrastructure.  It is composed of the following microservices
+The `agent-service-templates.tar` contains Terraform configuration which deploys Agent services on infrastructure. A collection of Agent related microservices deployed on the Agent infrastructure. It is composed of the following microservices
     - Sandbox
     - runtime-job
     - Job runner
     
-Link this repository to the Schematics Workspace and run `Generate Plan` and `Apply Plan` to deploy the Agent services the agent infrastructure.
-
-## Requirements
-
-
-|  **Name**                  | **Version** |
-|  --------------------------| -------------|
-|  terraform                 | ~> 1.0 |
-|  terraform_provider_ibm    | ~> 1.42 |
-
+Click [here](https://cloud.ibm.com/docs/schematics?topic=schematics-agents-setup&interface=ui#agents-setup-svc) to use the Agent service `tar` file. Link this repository to the Schematics Workspace and run `Generate Plan` and `Apply Plan` to deploy the Agent services the Agent infrastructure.
 
 ## Inputs
 
