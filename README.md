@@ -13,7 +13,7 @@ This Agent repository helps users to provision the infrastructure required for a
 5. [Requirements](##Requirements)
 6. [Inputs](##Inputs)
 7. [Outputs](##Outputs)
-8. [Next Stepts](##Next-Steps)
+8. [Next Steps](##Next-Steps)
 
 ## Prerequisites
 
