@@ -16,7 +16,7 @@ locals {
   #IAM compatmode (false for stage/prod)
   iam_compatmode = "false"
   #Schematics endpoint url (optional: private CSE or VPE)
-  schematics_endpoint = "https://private-${var.schematics_endpoint_location}.schematics.cloud.ibm.com"
+  schematics_endpoint = "https://${var.schematics_endpoint_location}.schematics.test.cloud.ibm.com"
   #Schematics agent jobrunner image ID
   schematics_jobrunner_image = "icr.io/schematics-remote/schematics-job-runner:eb8ca280-179"
   #Schematics agent job12 image ID
